@@ -1,0 +1,39 @@
+{
+  "name": "@aossie/supportusbutton",
+  "version": "1.0.0",
+  "description": "A customizable and flexible Support Us button component for integrating sponsorship and donation options into web applications.",
+  "keywords": [
+    "aossie",
+    "support",
+    "donation",
+    "sponsor",
+    "button",
+    "widget",
+    "open-source"
+  ],
+  "homepage": "https://github.com/AOSSIE-Org/SupportUsButton#readme",
+  "bugs": {
+    "url": "https://github.com/AOSSIE-Org/SupportUsButton/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AOSSIE-Org/SupportUsButton.git"
+  },
+  "license": "GNU General Public License v3.0",
+  "author": "AOSSIE Organization",
+  "type": "module",
+  "main": "index.js",
+  "files": [
+    "dist",
+    "index.js",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "echo \"No tests specified\"",
+    "build": "echo \"Build step not configured yet\""
+  },
+  "engines": {
+    "node": ">=14"
+  }
+}
