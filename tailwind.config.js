@@ -13,10 +13,5 @@ export default {
       }
     }
   },
-  corePlugins: {
-    preflight: false
-    // Disable preflight if building a library
-    // This prevents Tailwind from resetting user site styles
-  },
   plugins: []
 }
