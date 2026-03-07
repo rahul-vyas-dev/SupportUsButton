@@ -1,10 +1,10 @@
-import React from "react";
+import type { ReactNode } from "react";
 
 /* =========================
-   THEME
+   Theme
 ========================= */
 
-export type theme = "AOSSIE" | "light" | "dark" | "minimal" | "corporate";
+export type Theme = "AOSSIE" | "light" | "dark" | "minimal" | "corporate";
 
 /* =========================================================
    Button Variant
@@ -16,18 +16,18 @@ export type ButtonVariant = "solid" | "outline" | "ghost" | "gradient";
    IMAGE TYPE
 ========================= */
 
-export type image = {
+export type Image = {
   src?: string;
   alt?: string;
 };
 
 /* =========================
-   HERO SECTION
+   Hero SECTION
 ========================= */
 
-export type hero = {
-  /** Optional hero background image */
-  image?: image;
+export type Hero = {
+  /** Optional Hero background Image */
+  Image?: Image;
 
   title: string;
   description: string;
@@ -54,7 +54,7 @@ export type organizationInformation = {
   description: string;
 
   /** Organization logo */
-  logo?: image | string;
+  logo?: Image | string;
 
   projectInformation: projectInformation;
 };
@@ -95,7 +95,7 @@ export type sponsors = sponsor[];
 export type sponsorLink = {
   name: string;
   url: string;
-  icon?: React.ReactNode;
+  icon?: ReactNode;
   className?: string;
 
   /** open link in new tab */
@@ -106,7 +106,7 @@ export type sponsorLink = {
    CTA SECTION
 ========================= */
 
-export type CTAsection = {
+export type CTASection = {
   title: string;
   description: string;
   sponsorLink: sponsorLink[];
@@ -116,7 +116,7 @@ export type CTAsection = {
    BACKGROUND PATTERNS
 ========================= */
 
-export type pattern = "dots" | "grid" | "stripes" | "none";
+export type Pattern = "dots" | "grid" | "stripes" | "none";
 
 /* =========================
    SUPPORT US COMPO PROPS
@@ -124,13 +124,13 @@ export type pattern = "dots" | "grid" | "stripes" | "none";
 
 export interface supportUsButtonProps {
   // Theme for the button, can be one of "AOSSIE", "light", "dark", "minimal", or "corporate"
-  theme?: theme;
+  Theme?: Theme;
 
   // Optional background pattern for the button, can be one of "dots", "grid", "stripes", or "none"
-  pattern?: pattern;
+  pattern?: Pattern;
 
-  // Information about the hero section, including title, description, sponsor label, and optional background image
-  Hero: hero;
+  // Information about the Hero section, including title, description, sponsor label, and optional background Image
+  hero: Hero;
 
   // Information about the organization, including name, description, logo, and project information
   organizationInformation: organizationInformation;
@@ -139,17 +139,17 @@ export interface supportUsButtonProps {
   sponsors: sponsors;
 
   // Information about the call-to-action section, including title, description, and sponsor links
-  CTAsection: CTAsection;
+  ctaSection: CTASection;
 
   // Optional class name for custom styling
   classNames?: {
     container?: string;
-    hero?: string;
+    Hero?: string;
     organizationInformation?: string;
     sponsors?: string;
-    CTAsection?: string;
+    ctaSection?: string;
   };
 
   // Optional button variant for styling the call-to-action buttons
-  ButtonVariant?: ButtonVariant;
+  buttonVariant?: ButtonVariant;
 }
