@@ -49,7 +49,7 @@ function getButtonClasses(buttonVariant: ButtonVariant): string {
 }
 
 // Main component function that renders the support us button, taking in various props for customization and rendering different sections such as hero, organization information, sponsors, and call-to-action based on the provided data and selected theme and button variant
-function supportUsButton({
+function SupportUsButton({
   Theme = "AOSSIE",
   pattern = "AOSSIE",
   hero = {
@@ -73,7 +73,7 @@ function supportUsButton({
   return (
     // Container for the support us button, with dynamic classes based on the selected theme and custom class names
     <div
-      className={`w-full justify-center items-center text-center ${Theme == "light" || Theme == "dark" ? classAccordingToTheme(Theme) : "bg-black text-white"} ${classNames.container}`}
+      className={`w-full font-sans justify-center items-center text-center ${Theme == "light" || Theme == "dark" ? classAccordingToTheme(Theme) : "bg-black text-white"} ${classNames.container}`}
     >
       {/* Hero section with optional background image*/}
       <div className="relative w-full h-[50vh] flex justify-center">
@@ -104,11 +104,12 @@ function supportUsButton({
               viewBox="0 0 24 24"
               fill="black"
               stroke="black"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
               className="lucide lucide-heart-icon lucide-heart"
             >
+              <title>Support heart icon</title>
               <path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5" />
             </svg>
           </div>
@@ -118,7 +119,7 @@ function supportUsButton({
               {hero.title}
             </h1>
             <p
-              className={`wrap-anywhere ${Theme === "light" ? "text-slate-600" : "text-slate-400"} text-lg`}
+              className={`wrap-anywhere ${Theme === "light" ? "text-slate-600" : "text-slate-400"} text-lg font-semibold`}
             >
               {hero.description}
             </p>
@@ -332,6 +333,7 @@ function supportUsButton({
                               fill="currentColor"
                               viewBox="0 0 24 24"
                             >
+                              <title>Platinum tier icon</title>
                               <path d="M3 7l4 4 5-7 5 7 4-4v11H3V7z" />
                             </svg>
                           )}
@@ -344,6 +346,7 @@ function supportUsButton({
                               fill="currentColor"
                               viewBox="0 0 24 24"
                             >
+                              <title>Gold tier icon</title>
                               <path d="M6 2h12v3h3v3a5 5 0 0 1-5 5h-1a5 5 0 0 1-4 3.9V20h4v2H9v-2h4v-3.1A5 5 0 0 1 9 13H8a5 5 0 0 1-5-5V5h3V2z" />
                             </svg>
                           )}
@@ -356,6 +359,7 @@ function supportUsButton({
                               fill="currentColor"
                               viewBox="0 0 24 24"
                             >
+                              <title>Silver tier icon</title>
                               <path d="M12 14a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2l-3 6 3-2 3 2-3-6z" />
                             </svg>
                           )}
@@ -368,6 +372,7 @@ function supportUsButton({
                               fill="currentColor"
                               viewBox="0 0 24 24"
                             >
+                              <title>Bronze tier icon</title>
                               <path d="M2 12l5-5 4 4 4-4 7 7-5 5-4-4-4 4-7-7z" />
                             </svg>
                           )}
@@ -384,9 +389,11 @@ function supportUsButton({
 
                     <div className="w-full">
                       <h3 className={`font-bold text-2xl`}>{sponsor.name}</h3>
-                      <span className="flex text-[16px] p-2 rounded-xl items-center mt-3.5 font-semibold bg-[#d0f2eb] w-fit">
-                        {sponsor.sponsorshipTier}
-                      </span>
+                      {sponsor.sponsorshipTier && (
+                        <span className="flex text-[16px] p-2 rounded-xl items-center mt-3.5 font-semibold bg-[#d0f2eb] text-black w-fit">
+                          {sponsor.sponsorshipTier}
+                        </span>
+                      )}
                     </div>
                   </div>
                 </a>
@@ -398,7 +405,7 @@ function supportUsButton({
 
       {/* Call-to-action section with title, description, and sponsor links */}
       <div
-        className={`w-full flex justify-center p-5 ${Theme === "light" || (Theme === "dark" && classAccordingToTheme(Theme))} ${classNames.ctaSection}`}
+        className={`w-full flex justify-center p-5 ${(Theme === "light" || Theme === "dark") && classAccordingToTheme(Theme)} ${classNames.ctaSection}`}
       >
         <div className="w-4/5 flex flex-col items-center gap-5 py-20 border border-primary rounded-sm">
           <h2 className={`font-extrabold text-4xl md:text-5xl lg:text-6xl`}>
@@ -434,4 +441,4 @@ function supportUsButton({
   );
 }
 
-export default supportUsButton;
+export default SupportUsButton;
