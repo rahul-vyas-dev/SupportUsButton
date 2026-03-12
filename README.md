@@ -178,9 +178,10 @@ const props: supportUsButtonProps = {
     },
 
     organizationInformation: {
+        className: ""        
         name: "",           // ← your organization name
         description: "",    // ← short org description
-        logo: { src: "", alt: "" }, // ← org logo (or pass a string for text fallback)
+        logo: { src: "", alt: "" }, // ← Add file path to src and alt text for accessibility. Note: Accepts ReactNode JSX elements
         projectInformation: {
             name: "",       // ← your project name
             description: "",// ← short project description
@@ -197,7 +198,13 @@ const props: supportUsButtonProps = {
         title: "",          // ← CTA heading
         description: "",    // ← why people should sponsor
         sponsorLink: [
-            { name: "", url: "", icon: null, newTab: true },
+            {
+              name: "Examplename"
+              className: "sponsor-link",
+              url: "https://example.com/sponsor",
+              icon: null, // This Accepts ReactNode element(JSX)
+              newTab: true
+            },
             // Add one entry per sponsorship platform
         ],
     },
