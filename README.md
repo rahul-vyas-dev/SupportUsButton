@@ -334,7 +334,7 @@ Information about the organization and project.
 | `name`               | string               | Yes      | Organization name        |
 | `description`        | string               | Yes      | Organization description |
 | `logo`               | `Image` / string     | No       | Organization logo        |
-| `projectInformation` | `projectInformation` | Yes      | Project details          |
+| `projectInformation` | `projectInformation` | No       | Project details          |
 
 </details>
 

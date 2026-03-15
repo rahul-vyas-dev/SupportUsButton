@@ -193,40 +193,45 @@ function SupportUsButton({
             </div>
 
             {/* Line */}
-            <div
-              className={`
+            {organizationInformation.projectInformation && (
+              <div
+                className={`
             border
             ${Theme === "AOSSIE" && "border-[#f1c514]/50"}
             ${Theme === "light" && "border-gray-300/50"}
             ${Theme === "dark" && "border-gray-700/50"}
             ${Theme === "minimal" && "border-gray-800/50"}
             ${Theme === "corporate" && "border-blue-600/50"}`}
-            ></div>
+              ></div>
+            )}
 
             {/* Project information */}
-            <div className="flex flex-col gap-2">
-              <h3
-                className={`font-bold w-fit uppercase text-sm p-2 rounded-lg
+            {organizationInformation.projectInformation && (
+              <div className="flex flex-col gap-2">
+                <h3
+                  className={`font-bold w-fit uppercase text-sm p-2 rounded-lg
                   ${Theme === "AOSSIE" && "bg-[#edc214]"}
                   ${Theme === "light" && "bg-gray-300/50"}
                   ${Theme === "dark" && "bg-gray-700/50"}
                   ${Theme === "minimal" && "bg-gray-800/50"}
                   ${Theme === "corporate" && "bg-blue-600/50"}`}
-              >
-                ABOUT PROJECT: {organizationInformation.projectInformation.name}
-              </h3>
-              <p
-                className={`italic font-semibold 
+                >
+                  ABOUT PROJECT:{" "}
+                  {organizationInformation.projectInformation.name}
+                </h3>
+                <p
+                  className={`italic font-semibold 
                 ${Theme === "AOSSIE" && "text-[#614f08]"}
                 ${Theme === "light" && "text-gray-600"}
                 ${Theme === "dark" && "text-gray-400"}
                 ${Theme === "minimal" && "text-gray-800"}
                 ${Theme === "corporate" && "text-blue-600/80"}
                 `}
-              >
-                "{organizationInformation.projectInformation.description}"
-              </p>
-            </div>
+                >
+                  "{organizationInformation.projectInformation.description}"
+                </p>
+              </div>
+            )}
           </div>
         </div>
       </div>
