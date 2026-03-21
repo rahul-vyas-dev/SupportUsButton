@@ -173,47 +173,46 @@ function SupportUsButton({
 
             {/* Organization logo */}
             
-        <div>
-          {validatedUrl ? (
-            <a
-              href={validatedUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              title={`Visit ${organizationInformation?.name}`}
-            >
-              {typeof organizationInformation.logo === "string" ? (
-                <span className="block h-fit w-fit p-4 bg-black text-white rounded-2xl">
-                  <b className="text-2xl italic">
-                    {organizationInformation.logo}
-                  </b>
-                </span>
-              ) : (
-                <img
-                  className="w-24 h-24 bg-white/80 select-none rounded-2xl object-cover object-center"
-                  src={organizationInformation.logo?.src}
-                  alt={organizationInformation.logo?.alt}
-                  draggable={false}
-                />
-              )}
-            </a>
-          ) : (
-            <>
-              {typeof organizationInformation.logo === "string" ? (
-                <span className="block h-fit w-fit p-4 bg-black text-white rounded-2xl">
-                  <b className="text-2xl italic">
-                    {organizationInformation.logo}
-                  </b>
-                </span>
-              ) : (
-                <img
-                  className="w-24 h-24 bg-white/80 select-none rounded-2xl object-cover object-center"
-                  src={organizationInformation.logo?.src}
-                  alt={organizationInformation.logo?.alt}
-                  draggable={false}
-                />
-              )}
-            </>
-          )}
+       <div>
+          {organizationInformation?.logo ? (
+            validatedUrl ? (
+              <a
+                href={validatedUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                title={`Visit ${organizationInformation?.name}`}
+                className="inline-block transition-transform duration-200 hover:scale-105 hover:shadow-lg cursor-pointer"
+              >
+                {typeof organizationInformation.logo === "string" ? (
+                  <span className="block h-fit w-fit p-4 bg-black text-white rounded-2xl">
+                    <b className="text-2xl italic">
+                      {organizationInformation.logo}
+                    </b>
+                  </span>
+                ) : (
+                  <img
+                    className="w-24 h-24 bg-white/80 select-none rounded-2xl object-cover object-center"
+                    src={organizationInformation.logo.src}
+                    alt={organizationInformation.logo.alt}
+                    draggable={false}
+                  />
+                )}
+              </a>
+            ) : typeof organizationInformation.logo === "string" ? (
+              <span className="block h-fit w-fit p-4 bg-black text-white rounded-2xl">
+                <b className="text-2xl italic">
+                  {organizationInformation.logo}
+                </b>
+              </span>
+            ) : (
+              <img
+                className="w-24 h-24 bg-white/80 select-none rounded-2xl object-cover object-center"
+                src={organizationInformation.logo.src}
+                alt={organizationInformation.logo.alt}
+                draggable={false}
+              />
+            )
+          ) : null}
         </div>
             {/* Organization name and description */}
             <div className="flex flex-col gap-4">
