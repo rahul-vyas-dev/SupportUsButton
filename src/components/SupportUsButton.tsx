@@ -48,6 +48,16 @@ function getButtonClasses(buttonVariant: ButtonVariant): string {
   return `${base} bg-primary hover:bg-primary/90 text-black font-black py-4 transition-all active:scale-[0.98] shadow-lg shadow-primary/20`;
 }
 
+// Helper function to validate URLs and prevent XSS through 'javascript:' protocol
+function validateUrl(url?: string): string | undefined {
+  if (!url) return undefined;
+  const lowerUrl = url.toLowerCase();
+  if (lowerUrl.startsWith("http://") || lowerUrl.startsWith("https://")) {
+    return url;
+  }
+  return undefined;
+}
+
 // Main component function that renders the support us button, taking in various props for customization and rendering different sections such as hero, organization information, sponsors, and call-to-action based on the provided data and selected theme and button variant
 function SupportUsButton({
   Theme = "AOSSIE",
@@ -70,6 +80,7 @@ function SupportUsButton({
   },
   buttonVariant = "AOSSIE",
 }: supportUsButtonProps): React.JSX.Element {
+  const validatedUrl = validateUrl(organizationInformation?.url);
   return (
     // Container for the support us button, with dynamic classes based on the selected theme and custom class names
     <div
@@ -161,27 +172,49 @@ function SupportUsButton({
             )}
 
             {/* Organization logo */}
-            <div>
+            
+        <div>
+          {validatedUrl ? (
+            <a
+              href={validatedUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              title={`Visit ${organizationInformation?.name}`}
+            >
               {typeof organizationInformation.logo === "string" ? (
-                <span
-                  className="block h-fit w-fit p-4 bg-black text-white rounded-2xl"
-                  title={organizationInformation.logo}
-                >
+                <span className="block h-fit w-fit p-4 bg-black text-white rounded-2xl">
                   <b className="text-2xl italic">
                     {organizationInformation.logo}
                   </b>
                 </span>
               ) : (
                 <img
-                  className="w-24 h-24 bg-white/80 pointer-none:cursor-none select-none rounded-2xl object-cover object-center"
+                  className="w-24 h-24 bg-white/80 select-none rounded-2xl object-cover object-center"
                   src={organizationInformation.logo?.src}
                   alt={organizationInformation.logo?.alt}
-                  title={organizationInformation.logo?.alt}
                   draggable={false}
                 />
               )}
-            </div>
-
+            </a>
+          ) : (
+            <>
+              {typeof organizationInformation.logo === "string" ? (
+                <span className="block h-fit w-fit p-4 bg-black text-white rounded-2xl">
+                  <b className="text-2xl italic">
+                    {organizationInformation.logo}
+                  </b>
+                </span>
+              ) : (
+                <img
+                  className="w-24 h-24 bg-white/80 select-none rounded-2xl object-cover object-center"
+                  src={organizationInformation.logo?.src}
+                  alt={organizationInformation.logo?.alt}
+                  draggable={false}
+                />
+              )}
+            </>
+          )}
+        </div>
             {/* Organization name and description */}
             <div className="flex flex-col gap-4">
               <h2 className={`font-extrabold text-4xl md:text-5xl lg:text-6xl`}>
@@ -191,6 +224,9 @@ function SupportUsButton({
                 {organizationInformation.description}
               </p>
             </div>
+
+           
+             
 
             {/* Line */}
             {organizationInformation.projectInformation && (
@@ -290,7 +326,7 @@ function SupportUsButton({
             <div className="flex flex-row flex-wrap justify-center items-center gap-10 z-10">
               {sponsors.map((sponsor, index) => (
                 <a
-                  href={sponsor.link}
+                  href={validateUrl(sponsor.link)}
                   key={index}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -433,7 +469,7 @@ function SupportUsButton({
           <div className="flex flex-wrap justify-center items-center gap-5 mt-8">
             {ctaSection.sponsorLink.map((link, index) => (
               <a
-                href={link.url}
+                href={validateUrl(link.url)}
                 key={index}
                 {...(link.newTab && { target: "_blank" })}
                 rel="noopener noreferrer"
