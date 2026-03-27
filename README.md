@@ -288,6 +288,7 @@ Controls the top section of the widget.
 | -------------- | ------- | -------- | --------------------------- |
 | `Image`        | `Image` | No       | Background or hero image    |
 | `title`        | string  | Yes      | Main heading                |
+| `fit`          |"cover" / "contain" | No | logo-style images to avoid cropping         |
 | `description`  | string  | Yes      | Hero description            |
 | `sponsorLabel` | string  | No       | Label above sponsor section |
 
