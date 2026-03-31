@@ -178,7 +178,7 @@ function SupportUsButton({
           {/* Gradient background */}
           {Theme === "AOSSIE" && (
             <div
-              className={`absolute top-0 left-0 bottom-0 w-full h-full  rounded-2xl p-6 overflow-visible ${Theme === "AOSSIE" && "gradient-bg"}`}
+              className={`absolute top-0 left-0 bottom-0 w-full h-full rounded-2xl p-6 overflow-visible gradient-bg`}
             ></div>
           )}
 
