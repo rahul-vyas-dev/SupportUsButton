@@ -173,16 +173,20 @@ function SupportUsButton({
           ${classAccordingToTheme(Theme)}`}
         >
           {/* Background grid */}
-          <div className="absolute inset-0 bg-[radial-gradient(rgba(0,0,0,0.15)_1.5px,transparent_0)] bg-size-[20px_20px] pointer-events-none opacity-100"></div>
-          <div
-            className={`absolute top-0 left-0 bottom-0 w-1/2 h-full  rounded-2xl p-6 overflow-visible ${classAccordingToTheme(Theme)}`}
-          ></div>
+          <div className="absolute inset-0 bg-[radial-gradient(rgba(0,0,0,0.15)_1.5px,transparent_0)] bg-size-[20px_20px] pointer-events-none opacity-100 z-10"></div>
+          
+          {/* Gradient background */}
+          {Theme === "AOSSIE" && (
+            <div
+              className={`absolute top-0 left-0 bottom-0 w-full h-full rounded-2xl p-6 overflow-visible gradient-bg`}
+            ></div>
+          )}
 
           {/* Content container */}
           <div className="relative z-10 flex justify-start flex-col text-start gap-4">
             {/* Sponsor label  */}
             {hero.sponsorLabel && (
-              <span className="text-[10px] font-extrabold tracking-[0.2em] uppercase block">
+              <span className={`text-[10px] font-extrabold tracking-[0.2em] uppercase block ${Theme === "AOSSIE" && "text-white"}`}>
                 {hero.sponsorLabel}
               </span>
             )}
@@ -245,7 +249,7 @@ function SupportUsButton({
                 </h3>
                 <p
                   className={`italic font-semibold 
-                ${Theme === "AOSSIE" && "text-[#614f08]"}
+                ${Theme === "AOSSIE" && "text-[#908f8f]"}
                 ${Theme === "light" && "text-gray-600"}
                 ${Theme === "dark" && "text-gray-400"}
                 ${Theme === "minimal" && "text-gray-800"}
